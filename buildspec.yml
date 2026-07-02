@@ -4,8 +4,8 @@ phases:
   pre_build:
     commands:
       - echo Logging in to DockerHub...
-      - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
-      - REPOSITORY_URI="docker.io/abhishek070693/frontend"
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 761317711277.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI="761317711277.dkr.ecr.us-east-1.amazonaws.com/front-end-ecr"
       - CONTAINER_NAME="frontend-container"
       - IMAGE_TAG="latest"
   build:
